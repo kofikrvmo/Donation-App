@@ -52,10 +52,13 @@ export const PostSlice = createSlice({
 
             console.log("added")
         },
-        deletePost : (state, action: PayloadAction<{id: number}>) => {
+        /*deletePost : (state, action: PayloadAction<{id: number}>) => {
             const newpost = state.posts.filter(item=> item.id !== action.payload.id)
             state.posts = [...newpost]
-        },
+        },*/
+        deletePost: (state, action: PayloadAction<{ id: number }>) => {
+            state.posts = state.posts.filter(item => item.id !== action.payload.id);
+        }, 
 
         likePost : (state, action: PayloadAction<{username: string, id: number}>) => {
             const post = state.posts.find(item => item.id === action.payload.id);
