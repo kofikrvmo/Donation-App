@@ -27,7 +27,7 @@ const PostComponent: React.FC<Post> = ({ post }) => {
         }))
     }
 
-    const addCommentController = (id: number) => {
+    /*const addCommentController = (id: number) => {
         const username = userDetails.username;
         if (commentRef.current) {
             const comment = commentRef.current.value
@@ -36,7 +36,20 @@ const PostComponent: React.FC<Post> = ({ post }) => {
         }
         
         commentRef.current.value = ""
-    }
+    }*/
+     const addCommentController = (id : number) => {
+            const username = userDetails.username;
+            if (commentRef.current) {
+                const comment = commentRef.current.value.trim();
+                if (comment) { 
+                    const commentData = { username, comment };
+                    dispatch(addComment({ comment: commentData, id }))
+                    commentRef.current.value = "";
+                } else {
+                    console.warn("Comment cannot be empty.");
+                }
+            }
+        };
 
 
     return (
